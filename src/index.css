@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Brand tokens mirrored from the storefront (src/index.css @theme). */
+@theme {
+  --color-primary: #002049;
+  --color-primary-dark: #001633;
+  --color-gold: #ffb800;
+  --color-gold-dark: #e09c00;
+  --color-navy: #002049;
+  --color-navy-dark: #001633;
+  --color-ink: #111111;
+  --color-coal: #1a1a1a;
+  --color-steel: #4b5563;
+  --color-faint: #6b7280;
+  --color-line: #e5e7eb;
+  --color-line-dark: #d1d5db;
+  --color-mist: #f8f9fa;
+  --color-pale: #f1f3f5;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+button, a, summary, select, input[type="checkbox"], label { cursor: pointer; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input:not([type]), textarea { cursor: text; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-mist);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Modal entrance (mirrors storefront) */
+.popup-in { animation: popupin 320ms cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes popupin { from { opacity: 0; transform: scale(0.96) translateY(16px); } to { opacity: 1; transform: none; } }
