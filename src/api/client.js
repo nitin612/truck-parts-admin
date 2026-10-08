@@ -7,6 +7,13 @@
  */
 const BASE = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
+// Security: Admin tokens stored in-memory only; sessions persisted via httpOnly cookies
+try {
+  localStorage.removeItem("admin_token");
+  localStorage.removeItem("token");
+  localStorage.removeItem("accessToken");
+} catch { /* noop */ }
+
 let accessToken = null;
 export const setToken = (t) => { accessToken = t; };
 export const getToken = () => accessToken;
