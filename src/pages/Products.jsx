@@ -16,7 +16,7 @@ const textToSpecs = (t) => {
 
 export default function Products() {
   const cats = useFetch("/categories");
-  const { data, loading, error, reload } = useFetch("/products?limit=1000");
+  const { data, loading, error, reload } = useFetch("/admin/products?limit=1000");
   const categories = cats.data?.items || [];
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("All");
