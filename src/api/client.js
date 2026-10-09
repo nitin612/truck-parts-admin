@@ -5,7 +5,7 @@
  *  - on a 401, tries one silent /auth/refresh then retries the request
  *  - throws an Error with a friendly `.message` and `.details`
  */
-const BASE = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const BASE = import.meta.env.VITE_API_URL || "http://localhost:5001/api/v1";
 
 // Security: Admin tokens stored in-memory only; sessions persisted via httpOnly cookies
 try {
