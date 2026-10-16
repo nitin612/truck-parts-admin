@@ -3,8 +3,8 @@ import { PageTitle, inputCls, labelCls, btnGold } from "../components/ui.jsx";
 import api from "../api/client.js";
 
 const FIELDS = [
-  ["storeName", "Store name"], ["phone", "Phone"], ["email", "Email"], ["address", "Address"],
-  ["hours", "Hours"], ["abn", "ABN"], ["announcement", "Announcement bar"],
+  ["storeName", "Store name"], ["legalName", "Legal entity name (Pty Ltd)"], ["phone", "Phone"], ["email", "Email"], ["address", "Address"],
+  ["hours", "Hours"], ["abn", "ABN"], ["acn", "ACN"], ["announcement", "Announcement bar"],
 ];
 const NUMS = [["freeFreightOver", "Free freight over ($)"], ["standardFee", "Standard freight ($)"], ["expressFee", "Express freight ($)"]];
 
