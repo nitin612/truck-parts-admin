@@ -37,12 +37,19 @@ async function raw(path, { method = "GET", body, auth = true, _retry = false } =
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
-    const err = new Error(data.error || `Request failed (${res.status})`);
+    // The API sends { error: { code, message } }; older routes send { error: "text" }
+    const err = new Error(errorText(data) || `Request failed (${res.status})`);
     err.status = res.status;
     err.details = data.details;
     throw err;
   }
   return data;
+}
+
+function errorText(data) {
+  const e = data?.error;
+  if (!e) return data?.message || "";
+  return typeof e === "string" ? e : e.message || "";
 }
 
 async function tryRefresh() {
@@ -66,7 +73,7 @@ async function uploadFile(file, { _retry = false } = {}) {
   const res = await fetch(BASE + "/uploads", { method: "POST", headers, credentials: "include", body: fd });
   if (res.status === 401 && !_retry && (await tryRefresh())) return uploadFile(file, { _retry: true });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || `Upload failed (${res.status})`);
+  if (!res.ok) throw new Error(errorText(data) || `Upload failed (${res.status})`);
   return data; // { url, path, filename }
 }
 

@@ -4,7 +4,8 @@ import { formatAUD, formatDate } from "../lib/format.js";
 import { PageTitle, Empty, th, td, inputCls } from "../components/ui.jsx";
 import api from "../api/client.js";
 
-const STATUSES = ["Pending payment", "Packed in Campbellfield VIC", "Courier booked", "In transit", "Delivered", "Cancelled"];
+// Same vocabulary the API accepts and the storefront console uses
+const STATUSES = ["Pending payment", "Confirmed", "Packed", "Packed in Campbellfield VIC", "Courier booked", "In transit", "Dispatched", "Delivered", "Payment failed", "Cancelled"];
 
 export default function Orders() {
   const { data, loading, error, reload } = useFetch("/orders");
@@ -12,6 +13,8 @@ export default function Orders() {
   const [q, setQ] = useState("");
 
   const setStatus = async (ref, status) => {
+    // A status change emails the customer (and Cancelled releases stock), so confirm first
+    if (!confirm(`Change order ${ref} to "${status}"? The customer may be emailed.`)) return;
     setBusy(ref);
     try { await api.patch(`/orders/${ref}/status`, { status }); await reload(); }
     catch (e) { alert(e.message); }

@@ -13,12 +13,12 @@ Standalone staff/admin dashboard for the Aurex Truck Parts platform.
 
 ```bash
 npm install
-cp .env.example .env     # set VITE_API_URL to your running API (default http://localhost:5000/api)
+cp .env.example .env     # set VITE_API_URL to your running API (default http://localhost:5001/api/v1)
 npm run dev              # http://localhost:5174
 ```
 
-Make sure the API is running and seeded first (see the `truck-parts-api` repo), then log in with the
-seeded admin account (default `admin@aurex.com.au` / `Admin123!` — change it).
+Make sure the API is running first (see the `truck-parts-api` repo), then log in with a staff account.
+The API only seeds a staff account from its `ADMIN_EMAIL` / `ADMIN_PASSWORD` env vars — there are no default credentials.
 
 ## How it connects
 - `src/api/client.js` — fetch wrapper: attaches the Bearer access token, sends the refresh cookie,

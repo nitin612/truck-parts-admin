@@ -85,7 +85,7 @@ export default function Products() {
 
   return (
     <div>
-      <PageTitle kicker="Catalog" title={`Products${data ? ` (${data.total})` : ""}`} right={<button onClick={openAdd} className={btnGold}>+ Add Product</button>} />
+      <PageTitle kicker="Catalog" title={`Products${data ? ` (${data.total ?? data.count ?? (data.items || []).length})` : ""}`} right={<button onClick={openAdd} className={btnGold}>+ Add Product</button>} />
       <div className="mb-3 flex flex-wrap gap-2">
         <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name, SKU, brand…" className={`${inputCls} min-w-52 flex-1`} />
         <select value={cat} onChange={(e) => setCat(e.target.value)} className={inputCls} aria-label="Category">
