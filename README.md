@@ -1,44 +1,6 @@
-# Aurex Truck Parts — Admin Console (starter)
+# Aurex Truck Parts — Admin Console (Deprecated)
 
-Standalone staff/admin dashboard for the Aurex Truck Parts platform.
-**Stack:** React 19 · Vite · React Router · Tailwind CSS v4. Talks to the `truck-parts-api` backend.
+This standalone repository has been decommissioned.
 
-> This is a **starter scaffold**: login, API client (with token + silent refresh),
-> protected layout, and data-wired pages (Dashboard, Orders with status updates,
-> Products, Categories, Promos with full CRUD, Enquiries with status, Customers,
-> Settings). Create/edit forms for products & categories are the next build step
-> (marked in the code).
-
-## Quick start
-
-```bash
-npm install
-cp .env.example .env     # set VITE_API_URL to your running API (default http://localhost:5001/api/v1)
-npm run dev              # http://localhost:5174
-```
-
-Make sure the API is running first (see the `truck-parts-api` repo), then log in with a staff account.
-The API only seeds a staff account from its `ADMIN_EMAIL` / `ADMIN_PASSWORD` env vars — there are no default credentials.
-
-## How it connects
-- `src/api/client.js` — fetch wrapper: attaches the Bearer access token, sends the refresh cookie,
-  and on a 401 does one silent `/auth/refresh` + retry.
-- `src/store/auth.jsx` — restores the session on load via the refresh cookie, enforces `isAdmin`.
-- `VITE_API_URL` must point at the API, and the API's `CLIENT_ORIGINS` must include this app's
-  origin (`http://localhost:5174` in dev) for CORS + cookies to work.
-
-## Structure
-```
-src/
-  api/client.js        API fetch wrapper
-  store/auth.jsx       admin auth context
-  components/          Layout (sidebar), ProtectedRoute
-  lib/                 useFetch hook, formatters
-  pages/               Login, Dashboard, Orders, Enquiries, Customers,
-                       Products, Categories, Promos, Settings
-```
-
-## Note on the existing admin
-The storefront already has a built-in admin at `/admin`. This separate app is the path to a fully
-decoupled staff console. You can run both during migration and retire the in-app one later.
-# truck-parts-admin
+The active, fully featured Staff Administration Console is integrated directly into the main repository at:
+👉 **[Aurex-Trucks-Parts](https://github.com/i-shubham24/Aurex-Trucks-Parts)** (mounted at `/admin`).
